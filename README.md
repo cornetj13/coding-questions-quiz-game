@@ -45,9 +45,9 @@ No Installation is needed to view and use this webpage.
 
 ## Usage
 
-In order to access the refactored website, visit:
+In order to access the website, visit:
 
-
+https://cornetj13.github.io/coding-questions-quiz-game/
 
 ## Credits
 
