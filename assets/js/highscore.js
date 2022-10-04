@@ -1,11 +1,14 @@
 /*        GLOBAL VARIABLES        */
+//
 // Document Selectors
 var showHighscoresElement = document.getElementById("show-highscores");
 
 // Gameplay Variables
 var highScores = [];
 
-// Load Scores Function
+/*        FUNCTIONS        */
+//
+// Load Scores Function - a function for loading the scores array out of local storage and saving it in an array.
 function loadScores() {
   var storedScores = JSON.parse(localStorage.getItem("scores"));
 
@@ -14,7 +17,7 @@ function loadScores() {
   }
 }
 
-// Render Scores Function
+// Render Scores Function - a function for displaying the top 5 highest scores, from highest to lowest. The function will display a no scores message if there are no previous scores, and all the available scores (in descending order) if there are less than 5.
 function renderScores() {
   loadScores();
   if(highScores.length === 0) {
@@ -49,4 +52,7 @@ function renderScores() {
   }
 }
 
+/*        MAIN CODE        */
+//
+// Render scores on page load.
 renderScores();

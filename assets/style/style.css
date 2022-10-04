@@ -76,7 +76,7 @@ a {
   padding: 5px 16px;
 }
 
-a:hover {
+h2 a:hover {
   color: var(--tertiary-text);
 }
 

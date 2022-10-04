@@ -1,6 +1,6 @@
 /*        GLOBAL VARIABLES        */
+//
 // Document Selectors
-var loadScoresElement     = document.getElementById("load-highscores");
 var timerElement          = document.getElementById("timer-seconds");
 var playElement           = document.getElementById("play-button");
 var questionHeaderElement = document.getElementById("questions-header");
@@ -54,7 +54,8 @@ var answersArray = [
 ]
 
 /*        FUNCTIONS        */
-// Load Scores Function
+//
+// Load Scores Function - a function for loading the scores array out of local storage and saving it in an array.
 function loadScores() {
   var storedScores = JSON.parse(localStorage.getItem("scores"));
 
@@ -63,24 +64,13 @@ function loadScores() {
   }
 }
 
-// Render Scores Function
-function renderScores() {
-  loadScores();
-  for(let i = 0; i < highScores.length; i++) {
-    var highScoreObj = highScores[i];
-    var highScoreName = highScoreObj.nameValue;
-    var highScoreValue = highScoreObj.scoreValue;
-    showHighscoresElement.textContent = "The player " + highScoreName + " has a score of " + highScoreValue + ".";
-  }
-}
-
-// Store Score Function
+// Store Score Function - a function for saving the current scores to local storage.
 function storeScores(scores) {
   var scoresToStore = JSON.stringify(scores);
   localStorage.setItem("scores", scoresToStore);
 }
 
-// Submit Score Function
+// Submit Score Function - a function for adding the current score the highscores array if the play wants to submit their score.
 function submitScore(event) {
   event.preventDefault();
   submitScoreElement.disabled = true;
@@ -92,11 +82,10 @@ function submitScore(event) {
   storeScores(highScores);
 }
 
-// Function for timer.
+// Timer Function - a function for keeping track of the time the player is taking to take the quiz. The end game function is triggered if the player times out.
 function setTime() {
   timerElement.textContent = "Timer: " + secondsLeft + " ";
 
-  // Sets interval in variable.
   timerInterval = setInterval(function() {
     if(!isPaused) {
       secondsLeft--;
@@ -104,15 +93,13 @@ function setTime() {
     }
 
     if(secondsLeft === 0) {
-      // Stops execution of action at set interval.
       clearInterval(timerInterval);
-      // Calls function to go to score page.
       endGame();
     }
   }, 1000);
 }
 
-// Function for correct guess.
+// Correct Guess Function - a function for when the player correctly guesses an answer. The game is paused and the result of the guess (and a fun fact) are displayed for a short amount of time.
 function correctGuess() {
   isPaused = true;
   afterAnswerElement.setAttribute("style", "display: block;");
@@ -125,7 +112,7 @@ function correctGuess() {
   setTimeout(timeBeforeNext, 6000);
 }
 
-// Function for incorrect guess.
+// Incorrect Guess Function - similar to the above function, an incorrect guess also includes a penalty of losing time off the clock.
 function incorrectGuess() {
   isPaused = true;
   secondsLeft = secondsLeft - 9;
@@ -139,7 +126,7 @@ function incorrectGuess() {
   setTimeout(timeBeforeNext, 6000);
 }
 
-// Function for pausing game for guess status.
+// Unpause Function - a function for unpausing the game after displaying guess status and fun fact.
 function timeBeforeNext() {
   questionCount++;
   askQuestion();
@@ -151,7 +138,7 @@ function timeBeforeNext() {
   answerButtonElement4.disabled = false;
 }
 
-// Function for end of game.
+// End Gmae Function - a function for when the game is over. The play has the option to submit their score or play again.
 function endGame() {
   timerElement.textContent = "Timer: " + secondsLeft + " ";
   clearInterval(timerInterval);
@@ -167,7 +154,7 @@ function endGame() {
   playElement.addEventListener("click", playGame);
 }
 
-// Function for game.
+// Ask Question Function - a function for asking a question with the answers in a random place. At the end of the question set, the function triggers the end game function.
 function askQuestion() {
   answersElement.setAttribute("style", "display: grid; grid-template-columns: 1fr 1fr; gap: 2em;");
   if(questionCount < questionsArray.length) {
@@ -190,7 +177,7 @@ function askQuestion() {
   }
 }
 
-// Function for play button.
+// Play Game Function - a function for starting the game. Sets variables to starting values and calls other functions to start the game.
 function playGame() {
   submitScoreElement.disabled = false;
   scoreNameElement.value = "";
@@ -207,7 +194,7 @@ function playGame() {
 }
 
 /*        MAIN CODE        */
-
+//
 // Hidden elements at start.
 answersElement.setAttribute("style", "display: none;");
 afterAnswerElement.setAttribute("style", "display: none;");
@@ -215,8 +202,6 @@ highscoreElement.setAttribute("style", "display: none;");
 
 // Event listeners for game.
 playElement.addEventListener("click", playGame);
-loadScoresElement.addEventListener("click", renderScores);
-
 answerButtonElement1.addEventListener("click", correctGuess);
 answerButtonElement2.addEventListener("click", incorrectGuess);
 answerButtonElement3.addEventListener("click", incorrectGuess);
