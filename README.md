@@ -1,5 +1,7 @@
 # US President Quiz Game
 
+![GitHub License](https://img.shields.io/github/license/cornetj13/coding-questions-quiz-game?style=plastic)
+
 ## Description
 
 This challenge involves creating a quiz game that helps the users test their knowledge about US presidents. Their score is determined by the time it takes to complete the quiz, and scores are stored in local storage. This allows a highscores page to be generated if the quiz is played multiple times. The following User Story and Acceptance Criteria is also met:
