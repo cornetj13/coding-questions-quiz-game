@@ -27,6 +27,7 @@
 /* Body Element */
 body {
   font-family: 'League Spartan', sans-serif;
+  height: 100vh;
 }
 
 /* General Elements */
@@ -36,10 +37,30 @@ body {
   text-align: center;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .spacing {
-  margin: 1rem;
+  margin: 1.25rem;
   padding: 0.5rem;
   line-height: 1.25em;
+}
+
+.top-margin {
+  margin-top: 2em;
+}
+
+.unordered-list {
+  list-style-type: none;
+}
+
+.lg-font {
+  font-size: 1.5em;
+}
+
+.md-font {
+  font-size: 1.125em;
 }
 
 /* Header Elements */
@@ -47,6 +68,21 @@ header {
   background-color: var(--primary-color);
   color: var(--primary-text);
   justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-text);
+  padding: 5px 16px;
+}
+
+a:hover {
+  color: var(--tertiary-text);
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--primary-text);
 }
 
 h1 {
@@ -57,12 +93,47 @@ h1 {
 /* Main Elements */
 .main {
   flex-direction: column;
-  /* width: 50em; */
+  justify-content: space-around;
+}
+
+.questions {
+  width: 60%;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
 }
 
 /* Footer Elements */
 .footer {
+  background-color: var(--primary-color);
+  color: var(--primary-text);
   justify-content: center;
-  margin: 1rem;
-  padding: 2rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer h4 {
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1260px) {
+  header {
+    color: var(--primary-text);
+    font-size: 0.75em;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  header {
+    color: var(--primary-text);
+    font-size: 0.5em;
+  }
 }

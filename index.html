@@ -4,27 +4,49 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style/style.css">
-  <title>Code Quiz Game</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <title>President Quiz Game</title>
 </head>
 <body>
     <!-- Header -->
     <header class="flex header">
-      <h2 class="spacing">View Highscores</h2>
-      <h1 class="spacing">Code Quiz Game</h1>
-      <h2 class="spacing">Timer</h2>
+      <h2 class="spacing"><a href="./highscore.html" id="load-highscores">View Highscores</a></h2>
+      <h1 class="spacing">US President Facts Quiz Game</h1>
+      <h2 class="spacing" id="timer-seconds">Timer: 100</h2>
     </header>
   
     <!-- Main Section -->
     <main class="flex main">
-      <h3 class="spacing">Code Quiz</h3>
-      <p class="spacing">This is the description of the game.</p>
-      <button class="spacing">Play!</button>
+      <h3 class="spacing top-margin" id="questions-header">Welcome to the US Presidents Quiz!</h3>
+      <p class="spacing questions" id="questions-paragraph">This is a little quiz about some interesting facts that you may or may not know about previous US presidents. The faster you answer, the higher your score will be! However, beware... A wrong answer will remove 10 seconds from the clock. Can you get the top spot in the highscore hall of fame? Click play to find out!</p>
+      <div id="answers-area">
+        <button class="spacing" id="button-1"></button>
+        <button class="spacing" id="button-2"></button>
+        <button class="spacing" id="button-3"></button>
+        <button class="spacing" id="button-4"></button>
+      </div>
+      <div id="after-answer-area">
+        <h3 class="spacing" id="guess-result"></h3>
+        <p class="spacing" id="fun-fact"></p>
+      </div>
+      <div id="highscore-area">
+        <h3 class="spacing">Game Over!</h3>
+        <p class="spacing" id="display-score"></p>
+        <form class="flex flex-col">
+          <label class="spacing">Name: </label><br>
+          <input type="text" class="spacing" id="highscore-name">
+          <button class="spacing" id="submit">Submit Score</button>
+        </form>
+      </div>
+      <button class="spacing" id="play-button">Play</button>
     </main>
   
     <!-- Footer -->
     <footer class="flex footer">
       <h4>&copy 2022 Jonathan Cornet Webpage Production</h4>
     </footer>
+
+    <!-- JavaScript Scripts -->
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
